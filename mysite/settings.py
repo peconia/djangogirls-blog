@@ -101,6 +101,9 @@ try:
 except ImportError:
     pass
 
-
+# static files (css)
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
 
 
