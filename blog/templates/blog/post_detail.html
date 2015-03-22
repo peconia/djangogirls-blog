@@ -13,5 +13,7 @@
     {% endif %}
     {% endif %}
     <h1>{{ post.title }}</h1>
-    <p>{{ post.text|linebreaks }}</p>
+    {% autoescape off %}
+        <p>{{ post.text|linebreaks }}</p>
+    {% endautoescape %}
 {% endblock %}
