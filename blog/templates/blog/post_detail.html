@@ -2,17 +2,15 @@
 
 {% block content %}
     {% if post.published_date %}
-        {{ post.published_date }}
-    {% else %}
+       <p><br/> {{ post.published_date }} </p>
+    {% endif %}
         {% if user.is_authenticated %}
-        <a class="btn btn-default" href="{% url 'blog.views.post_publish' pk=post.pk %}">Publish</a>    
+            <a class="btn btn-success" href="{% url 'blog.views.post_publish' pk=post.pk %}">Publish</a>    
+            <a class="btn btn-primary" title="Edit" href="{% url 'post_edit' pk=post.pk %}">Edit <span class="glyphicon glyphicon-pencil"></span></a>
+            <a title="Delete" class="btn btn-danger" href="{% url 'post_remove' pk=post.pk %}">Delete <span class="glyphicon glyphicon-remove"></span></a>
+        {% endif %}
     
-
-    <a class="btn btn-default" title="Edit" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-<a title="Delete" class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-    {% endif %}
-    {% endif %}
-    <h1>{{ post.title }}</h1>
+    <h1 style="color: #339900">{{ post.title }}</h1>
     {% autoescape off %}
         <p>{{ post.text|linebreaks }}</p>
     {% endautoescape %}
