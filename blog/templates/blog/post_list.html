@@ -7,7 +7,9 @@
             {{ post.published_date }}
         </div>
         <h1><a href="{% url 'blog.views.post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-        <p>{{ post.text|linebreaks }}</p>
+        {% autoescape off %}
+            <p>{{ post.text|truncatewords:100 }}</p>
+         {% endautoescape %}
     </div>
 {% endfor %}
 {% endblock %}
