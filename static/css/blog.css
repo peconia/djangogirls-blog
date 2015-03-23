@@ -31,6 +31,9 @@ body {
 
 .page-not-found {
     background-image: url('../images/404.jpg');
+    min-height: 400px;
+    background-repeat: no-repeat;
+    
 
 }
 
