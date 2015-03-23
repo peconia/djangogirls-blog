@@ -11,7 +11,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar-brand {
     font-family: 'Rancho', Georgia, serif;
-    font-size: 20pt;
+    font-size: 2em;
     text-shadow: 1px 1px 1px #669900;
 }
 
@@ -25,20 +25,22 @@ body {
 
 .content  {
     background-color: #FFFFFF;
-    margin-top: 30px;
+    margin-top: 4em;
 
 }
 
 .jumbotron {
     background-image: url('../images/background.png');
-    background-repeat:  no-repeat;
+    background-repeat:  repeat-y;
     background-position: center 35%;
-    min-height: 350px; 
+    margin-top: 0;
+    margin-top: 0;
+    
 }
 
 #jumbotitle {
     color: #66FF00;
-    font-size: 56pt;
+    font-size: 5em;
     text-align: center;
     text-shadow: 3px 3px 3px #669900;
 }
@@ -46,9 +48,10 @@ body {
 #jumbotext {
     color: #ffffff;
     text-align: center;
-    padding-top: 40px;
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-top: 2.5em;
+    padding-left: 4em;
+    padding-right: 4em;
+    padding-bottom: 1.5em;
     font-weight: bold;
     text-shadow: 1px 1px 1px #ccc;
 }
@@ -75,7 +78,7 @@ a:hover.post-title {
 }
 
 footer {
-    padding: 20px;
+    padding: 2em;
 }
 
 footer a:link {
@@ -92,7 +95,6 @@ footer a:hover {
 
 
 
-
 /* navbar code */
 
 .navbar-custom {
@@ -104,6 +106,7 @@ footer a:hover {
   background-image: linear-gradient(to bottom, #454f52 0%, #2e3436 100%);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff454f52', endColorstr='#ff2e3436', GradientType=0);
+  margin-bottom:0;
 }
 .navbar-custom .navbar-brand {
   color: #65e827;
@@ -211,54 +214,3 @@ footer a:hover {
 }
 
 
-
-/* tasta eteenpain ei mun */
-
-/*
-
-.page-header {
-    background-color: #333333;
-    margin-top: 0;
-    padding: 20px 20px 20px 40px;
-}
-
-.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
-    color: #ffffff;
-    font-size: 36pt;
-    text-decoration: none;
-}
-
-.content {
-    margin-left: 40px;
-}
-
-
-.date {
-    float: right;
-    color: #828282;
-}
-
-.save {
-    float: right;
-}
-
-.post-form textarea, .post-form input {
-    width: 100%;
-}
-
-.top-menu, .top-menu:hover, .top-menu:visited {
-    color: #ffffff;
-    float: right;
-    font-size: 26pt;
-    margin-right: 20px;
-}
-
-.post {
-    margin-bottom: 70px;
-}
-
-.post h1 a, .post h1 a:visited {
-    color: #000000;
-}
-
-*/

@@ -18,20 +18,26 @@
         <nav class="navbar-wrapper navbar-default navbar-custom navbar-static-top" role="navigation">
 
             <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
                 <a class="navbar-brand" href="/">Peconia's blog</a>
             </div>
-            <div class="container"> 
-            <ul class="nav navbar-nav pull-right">
-            {% if user.is_authenticated %}
-                <li class="active"><a title="Draft Posts" href="{% url 'post_draft_list' %}"><span class="glyphicon glyphicon-list-alt"></span></a></li>
-                <li class="active"><a title="New Post" href="{% url 'blog.views.post_new' %}"><span class="glyphicon glyphicon-plus"></span></a></li>
-                <li class="active"><a title="Log Out" href="{% url 'django.contrib.auth.views.logout' %}"><span class="glyphicon glyphicon-log-out"></span></a></li>
-             
-            {% else %}
-                <li class="active"><a title="Log In" href="{% url 'django.contrib.auth.views.login' %}"><span class="glyphicon glyphicon-lock"></span></a></li>
-            {% endif %}
-           
-           </ul>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
+                <ul class="nav navbar-nav pull-right">
+                {% if user.is_authenticated %}
+                    <li class="active"><a title="Draft Posts" href="{% url 'post_draft_list' %}"><span class="glyphicon glyphicon-list-alt"></span></a></li>
+                    <li><a title="New Post" href="{% url 'blog.views.post_new' %}"><span class="glyphicon glyphicon-plus"></span></a></li>
+                    <li><a title="Log Out" href="{% url 'django.contrib.auth.views.logout' %}"><span class="glyphicon glyphicon-log-out"></span></a></li>
+                 
+                {% else %}
+                    <li><a title="Log In" href="{% url 'django.contrib.auth.views.login' %}">Log In  <span class="glyphicon glyphicon-lock"></span></a></li>
+                {% endif %}
+               
+               </ul>
             </div>
         </nav>
 
@@ -44,7 +50,7 @@
                 I don't always know what I am doing, 
                 but I am having fun while doing it!<p>
         </div>
-            <div class="content container"-fluid>
+            <div class="content container">
                 <div class="row">
                     <div class="col-md-10" style="float: none; margin: 0 auto;">
                         {% block content %}
