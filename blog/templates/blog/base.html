@@ -55,9 +55,10 @@
                     <div class="col-md-10" style="float: none; margin: 0 auto;">
                         {% block content %}
                         {% endblock %}
-                    </div>
-                </div>
-            </div>
+                    </div> <!-- blog.main -->
+                    
+                </div> <!-- /row-->
+            </div> <!-- /content container -->
         <div>
             <footer>
                 <p class="text-center"><a href="#">Back to top</a>  ***  <a href="/">Home</a></p>
@@ -68,5 +69,22 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script>
+            // toggle month
+            var toggleMonth = function(month) {
+                $(month).children('.posts').slideToggle('slow');
+                $(month).find('.month-data div.collapsed').toggle();
+                $(month).find('.month-data div.expanded').toggle(); 
+            }
+
+            // expand the current month
+            toggleMonth($('#{{now.year}}-{{now.month}}'));
+            
+            // intercept click to toggle month
+            $('.month-data').click(function() {
+                var month = $(this).parent();
+                toggleMonth(month);
+            });
+        </script>
     </body>
 </html>

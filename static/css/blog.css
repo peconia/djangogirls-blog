@@ -37,10 +37,10 @@ body {
 
 }
 
+/* jumbotron */
 
 .jumbotron {
     background-image: url('../images/background.jpg');
-
     background-position: left 35%;
     margin-top: 0;
     margin-top: 0;
@@ -68,6 +68,8 @@ body {
 .post-form textarea, .post-form input {
     width: 100%;
 }
+
+/* post titles */
 
 a:link.post-title {
     color: #50c603;
