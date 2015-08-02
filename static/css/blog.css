@@ -2,7 +2,8 @@
 
 
 p, div {
-  font-family: 'Muli', Verdana, Helvetica, sans-serif;
+    font-family: 'Muli', Verdana, Helvetica, sans-serif;
+    background: rgba(255, 255, 255, 0);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -20,13 +21,19 @@ h1 {
 }
 
 body { 
-    background: url('../images/congruent_outline.png') repeat 0 0;
+    background: url('../images/exotic-purple-distortions-part-2-3.png') repeat 0 0;
 }
 
 .content  {
     background-color: #FFFFFF;
     margin-top: 4em;
+    background: rgba(255, 255, 255, 0);
 
+}
+
+.col-md-10 {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px
 }
 
 .page-not-found {
@@ -90,14 +97,17 @@ a:hover.post-title {
 
 footer {
     padding: 2em;
+    font-size: 1.5em;
+    font-weight: bold;
+
 }
 
 footer a:link {
-    color: #50c603;
+    color: #ffffff;
 }
 
 footer a:visited {
-    color: #50c603;
+    color: #ffffff;
 }
 
 footer a:hover {
@@ -224,4 +234,5 @@ footer a:hover {
   color: #35ab18;
 }
 
+ /*sidebar menu styling*/
 
