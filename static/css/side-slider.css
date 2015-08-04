@@ -95,6 +95,7 @@
     margin-bottom: 15px;
     text-shadow: 1px 1px 1px 1px #000;
     font-family: 'Rancho', Georgia, serif;
+    word-break:break-all;
 }
 .sideclear {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
