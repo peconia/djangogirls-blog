@@ -10,6 +10,7 @@
           rel="stylesheet" media="screen">
         <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/Heart-round.PNG'%}" />
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <link rel="stylesheet" href="{% static 'css/side-slider.css' %}">
         <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Rancho" rel="stylesheet" type="text/css">
 
@@ -53,6 +54,27 @@
         </div>
 
 
+        <div class="sideslider" id="sideslider">
+            <div class="sideslider-tab">Archive</div>
+                <div id="sideslider-smartbutton">
+                    <div id="sideslider-text">
+                        <span class="header">Blog Archive</span>
+                        <span>
+                            <ul>
+                            {% for post in posts %}
+                                <li><a href="{% url 'blog.views.post_detail' pk=post.pk %}">{{ post.title }}</a></li>
+                            {% endfor %}
+                            </ul>
+                        </span>
+                    </div>
+                    <div class="sideclear">
+                    </div>
+                </div>
+
+            <div class="sideslider-close sideslider-close_en">Close</div>
+        </div> <!-- sideslider -->
+
+
 
         <div class="content container">
             <div class="row">
@@ -73,9 +95,12 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/jquery.side-slider.js' %}"></script>
 {#        <script type="text/javascript" src="https://jquery.com/src/jquery-latest.js"></script>#}
 
         <script>
+        $('#sideslider').sideSlider();
+
 
         </script>
 
