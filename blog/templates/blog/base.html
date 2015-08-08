@@ -61,8 +61,33 @@
                         <span class="header">Blog Archive</span>
                         <span>
                             <ul>
-                            {% for post in posts %}
-                                <li><a href="{% url 'blog.views.post_detail' pk=post.pk %}">{{ post.title }}</a></li>
+                            {% for year_dict in archive_dict %}
+                                {% for year, post_dict in year_dict.items %}
+                                    <li class="year">{{ year }}</li>
+                                    <ul>
+                                        {% for month, posts in post_dict.items %}
+                                            {% if posts %}
+                                            <li class="month" id="{{ month }}-{{ year }}">{{ month }}</li>
+
+                                                <div class="month-data" id="{{ month }}-{{ year }}" >
+                                                    <div class="collapsed">►&nbsp; <span class="counter"> ({{posts|length}})</span></div>
+                                                    <div class="expanded" style="display:none;">▼&nbsp;</div>
+                                                </div>
+                                                <ul class="archive_posts" style="display:none;">
+                                                {% for post in posts %}
+                                                    <li class="archive-post" id="{{month}}-{{ year }}"">
+                                                        <a class="title" href="{% url 'blog.views.post_detail' pk=post.pk %}">{{ post.title }}</a>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                            {% endif %}
+                                        {% endfor %}
+
+                                    </ul>
+
+
+
+                                {% endfor %}
                             {% endfor %}
                             </ul>
                         </span>
@@ -100,9 +125,19 @@
 
         <script>
         $('#sideslider').sideSlider();
-
-
         </script>
+
+    <script>
+
+    $('.month-data').click(function() {
+        // change teh arrow to point down/right
+        $(this).find('div.collapsed').toggle();
+        $(this).find('div.expanded').toggle();
+        // display or hide posts
+        $(this).next().select().slideToggle('slow');
+
+    });
+</script>
 
     </body>
 </html>
