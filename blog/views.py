@@ -7,18 +7,19 @@ from .forms import PostForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.template import Context, loader
+from collections import OrderedDict
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     archive_dict = get_post_archive()
-    return render(request, 'blog/post_list.html', {'posts': posts, 'archive_dict': archive_dict })
+    return render(request, 'blog/post_list.html', {'posts': posts, 'archive_dict': archive_dict})
 
 
 def post_detail(request, pk):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     post = get_object_or_404(Post, pk=pk)
     archive_dict = get_post_archive()
-    return render(request, 'blog/post_detail.html', {'post': post, 'posts': posts, 'archive_dict': archive_dict })
+    return render(request, 'blog/post_detail.html', {'post': post, 'posts': posts, 'archive_dict': archive_dict})
 
 @login_required
 def post_new(request):
@@ -66,39 +67,36 @@ def post_remove(request, pk):
     
 def get_post_archive():
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-    now = datetime.datetime.now()
 
-    #create a dict with the years and months of posts
-    post_dict = {}
+    post_dict = OrderedDict()
 
-    month_list = [
-        'dummy',
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December'
-    ]
+    month_dict = {
+        1: 'January',
+        2: 'February',
+        3: 'March',
+        4: 'April',
+        5: 'May',
+        6: 'June',
+        7: 'July',
+        8: 'August',
+        9: 'September',
+        10: 'October',
+        11: 'November',
+        12: 'December'
+    }
+
     for i in range(posts[0].published_date.year, posts[len(posts)-1].published_date.year-1, -1):
-        post_dict[i] = {}
+        post_dict[i] = OrderedDict()
         for month in range(1, 13):
-            post_dict[i][month_list[month]] = []
-    for archive_post in posts:
-        post_dict[archive_post.published_date.year][month_list[archive_post.published_date.month]].append(archive_post)
+            post_dict[i][month_dict[month]] = []
 
-    #this is necessary for the years to be sorted
-    post_sorted_keys = list(reversed(sorted(post_dict.keys())))
+    for archive_post in posts:
+        post_dict[archive_post.published_date.year][month_dict[archive_post.published_date.month]].append(archive_post)
+
     list_posts = []
-    for key in post_sorted_keys:
+    for key in post_dict:
         adict = {key:post_dict[key]}
         list_posts.append(adict)
-    print(list_posts)
+
     return list_posts
 
