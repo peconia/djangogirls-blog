@@ -31,6 +31,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
                 <ul class="nav navbar-nav pull-right">
                 {% if user.is_authenticated %}
+                    <li class="greeting">Hello {{ user.username }}! <br/></li>
                     <li class="active"><a title="Draft Posts" href="{% url 'post_draft_list' %}"><span class="glyphicon glyphicon-list-alt"></span></a></li>
                     <li><a title="New Post" href="{% url 'blog.views.post_new' %}"><span class="glyphicon glyphicon-plus"></span></a></li>
                     <li><a title="Log Out" href="{% url 'django.contrib.auth.views.logout' %}"><span class="glyphicon glyphicon-log-out"></span></a></li>
@@ -121,23 +122,20 @@
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="{% static 'js/bootstrap.min.js' %}"></script>
         <script src="{% static 'js/jquery.side-slider.js' %}"></script>
-{#        <script type="text/javascript" src="https://jquery.com/src/jquery-latest.js"></script>#}
 
         <script>
         $('#sideslider').sideSlider();
         </script>
 
-    <script>
-
-    $('.month-data').click(function() {
-        // change teh arrow to point down/right
-        $(this).find('div.collapsed').toggle();
-        $(this).find('div.expanded').toggle();
-        // display or hide posts
-        $(this).next().select().slideToggle('slow');
-
-    });
-</script>
+        <script>
+            $('.month-data').click(function() {
+                // change teh arrow to point down/right
+                $(this).find('div.collapsed').toggle();
+                $(this).find('div.expanded').toggle();
+                // display or hide posts
+                $(this).next().select().slideToggle('slow');
+            });
+        </script>
 
     </body>
 </html>
