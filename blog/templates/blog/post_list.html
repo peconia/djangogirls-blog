@@ -8,7 +8,7 @@
             </div>
             <div>
     
-            <h1><a class="post-title" href="{% url 'blog.views.post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+            <h1><a class="post-title" href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
             </div>
             {% autoescape off %}
                 <p>{{ post.text|truncatewords:100 }}</p>

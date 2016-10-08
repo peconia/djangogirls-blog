@@ -33,11 +33,11 @@
                 {% if user.is_authenticated %}
                     <li class="greeting">Hello {{ user.username }}! <br/></li>
                     <li class="active"><a title="Draft Posts" href="{% url 'post_draft_list' %}"><span class="glyphicon glyphicon-list-alt"></span></a></li>
-                    <li><a title="New Post" href="{% url 'blog.views.post_new' %}"><span class="glyphicon glyphicon-plus"></span></a></li>
-                    <li><a title="Log Out" href="{% url 'django.contrib.auth.views.logout' %}"><span class="glyphicon glyphicon-log-out"></span></a></li>
+                    <li><a title="New Post" href="{% url 'post_new' %}"><span class="glyphicon glyphicon-plus"></span></a></li>
+                    <li><a title="Log Out" href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span></a></li>
                  
                 {% else %}
-                    <li><a title="Log In" href="{% url 'django.contrib.auth.views.login' %}">Log In  <span class="glyphicon glyphicon-lock"></span></a></li>
+                    <li><a title="Log In" href="{% url 'login' %}">Log In  <span class="glyphicon glyphicon-lock"></span></a></li>
                 {% endif %}
                
                </ul>
@@ -77,7 +77,7 @@
                                                 <ul class="archive_posts" style="display:none;">
                                                 {% for post in posts %}
                                                     <li class="archive-post" id="{{month}}-{{ year }}"">
-                                                        <a class="title" href="{% url 'blog.views.post_detail' pk=post.pk %}">{{ post.title }}</a>
+                                                        <a class="title" href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
                                                     </li>
                                                 {% endfor %}
                                             </ul>
