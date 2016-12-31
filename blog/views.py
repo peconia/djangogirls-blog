@@ -91,14 +91,15 @@ def get_post_archive():
         11: 'November',
         12: 'December'
     }
+    
+    if posts:
+        for i in range(posts[0].published_date.year, posts[len(posts)-1].published_date.year-1, -1):
+            post_dict[i] = OrderedDict()
+            for month in range(1, 13):
+                post_dict[i][month_dict[month]] = []
 
-    for i in range(posts[0].published_date.year, posts[len(posts)-1].published_date.year-1, -1):
-        post_dict[i] = OrderedDict()
-        for month in range(1, 13):
-            post_dict[i][month_dict[month]] = []
-
-    for archive_post in posts:
-        post_dict[archive_post.published_date.year][month_dict[archive_post.published_date.month]].append(archive_post)
+        for archive_post in posts:
+            post_dict[archive_post.published_date.year][month_dict[archive_post.published_date.month]].append(archive_post)
 
     list_posts = []
     for key in post_dict:
